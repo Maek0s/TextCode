@@ -32,8 +32,6 @@ function KeyListener() {
             console.log('Frase:', phrase);
         }
       }
-
-      
     }
 
     window.addEventListener('keydown', handleKeyDown);
