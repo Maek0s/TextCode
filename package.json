@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "axios": "^1.11.0",
     "canvas-confetti": "^1.9.3",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",

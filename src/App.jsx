@@ -1,9 +1,10 @@
 import './App.css'
 
 import KeyListener from './logic/KeyListener.jsx';
+import OptionNav from './components/OptionNav.jsx';
 
 import logo from './assets/images/logotextcode.png'
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaRedo } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { MdLeaderboard } from "react-icons/md";
 
@@ -20,19 +21,16 @@ function App() {
           </a>
         </div>
         <div className="headerRight">
-          <a className="optionNav">
+          <OptionNav nameClass="username">
             <MdLeaderboard size={22}/>
-          </a>
-          <a className="optionNav">
-
+          </OptionNav>
+          <OptionNav nameClass="username">
             <IoMdSettings size={22}/>
-          </a>
-          <a className="optionNav">
-            <div className="username">
+          </OptionNav>
+          <OptionNav nameClass="username">
               <FaUser size={18}/>
               Username
-            </div>
-          </a>
+          </OptionNav>
         </div>
       </header>
 
