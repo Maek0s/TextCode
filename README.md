@@ -1,12 +1,22 @@
-# React + Vite
+# ✏️ Text&Code
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Es una aplicación web diseñada para ayudarte a mejorar tu mecanografía, tanto en modo clásico como en un modo especial para programadores, con fragmentos de código reales.
 
-Currently, two official plugins are available:
+## 💻 Estado de desarrollo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El proyecto se encuentra actualmente en desarrollo, sin una fecha definida para su primera versión estable.  
+Aun así, puedes probarlo directamente desde su [página web](https://maek0s.github.io/TextCode/).
 
-## Expanding the ESLint configuration
+## 🧠 Tecnologías usadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ React y JavaScript
+- 🧑‍🎨 CSS
+- 🎨 Iconos con [react-icons](https://react-icons.github.io/react-icons/)
+- ⚡ Vite (entorno de desarrollo y build)
+
+## 🕹️ ¿Cómo probar?
+
+El proyecto está desplegado mediante **GitHub Pages**.  
+Puedes acceder desde el siguiente enlace:
+
+👉 [https://maek0s.github.io/TextCode/](https://maek0s.github.io/TextCode/)
