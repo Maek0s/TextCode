@@ -1,0 +1,8 @@
+{
+    "codes":
+    [
+        "import React from 'react';\n\nfunction HolaMundo() {\n    return (\n        <div>\n            <h1>¡Hola, mundo!</h1>\n        </div>\n    );\n}\n\nexport default HolaMundo;",
+        "import React, { useState } from 'react';\n\nfunction Contador() {\n    const [contador, setContador] = useState(0);\n\n    return (\n        <div>\n            <p>Has hecho clic {contador} veces</p>\n            <button onClick={() => setContador(contador + 1)}>Incrementar</button>\n        </div>\n    );\n}\n\nexport default Contador;",
+        "import React, { useState } from 'react';\n\nfunction ListaTareas() {\n    const [tareas, setTareas] = useState([]);\n    const [texto, setTexto] = useState('');\n\n    const agregarTarea = () => {\n        if (texto.trim()) {\n          setTareas([...tareas, texto]);\n          setTexto('');\n        }\n    };\n\n    return (\n        <div>\n            <input value={texto} onChange={(e) => setTexto(e.target.value)} />\n          <button onClick={agregarTarea}>Añadir</button>\n          <ul>\n            {tareas.map((t, i) => <li key={i}>{t}</li>)}\n          </ul>\n        </div>\n    );\n}\n\nexport default ListaTareas;"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "codes":
+    [
+      "public class HolaMundo {\n    public static void main(String[] args) {\n        System.out.println(\"¡Hola, mundo!\");\n    }\n}",
+      "public class Factorial {\n    public static int calcular(int n) {\n        if (n <= 1) return 1;\n        return n * calcular(n - 1);\n    }\n\n    public static void main(String[] args) {\n        int numero = 5;\n        System.out.println(\"Factorial de \" + numero + \" = \" + calcular(numero));\n    }\n}",
+      "import java.util.Scanner;\n\npublic class Palindromo {\n    public static boolean esPalindromo(String texto) {\n        String limpio = texto.replaceAll(\"[^a-zA-Z]\", \"\").toLowerCase();\n        return new StringBuilder(limpio).reverse().toString().equals(limpio);\n    }\n\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print(\"Introduce una palabra o frase: \");\n        String entrada = sc.nextLine();\n        System.out.println(esPalindromo(entrada) ? \"Es un palíndromo\" : \"No es un palíndromo\");\n    }\n}"
+    ]
+}

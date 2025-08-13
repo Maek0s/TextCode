@@ -1,0 +1,7 @@
+{
+    "codes":
+    [
+        "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hola, mundo!\" << endl;\n    return 0;\n}",
+        "#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int numero = 5;\n    cout << \"Factorial de \" << numero << \" = \" << factorial(numero) << endl;\n    return 0;\n}"
+    ]
+}

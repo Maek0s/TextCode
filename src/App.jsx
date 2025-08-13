@@ -1,11 +1,15 @@
 import './App.css'
 
-import KeyListener from './logic/KeyListener.jsx';
+import logo from './assets/images/logotextcode.png'
+
+import Game from './logic/Game.jsx'
+
+import Footer from './components/Footer.jsx';
+
 import OptionNav from './components/OptionNav.jsx';
 
-import logo from './assets/images/logotextcode.png'
-import { FaUser, FaRedo } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
+import { FaUser, FaCodeBranch } from "react-icons/fa";
+import { IoMdSettings, IoLogoGithub } from "react-icons/io";
 import { MdLeaderboard } from "react-icons/md";
 
 function App() {
@@ -34,7 +38,9 @@ function App() {
         </div>
       </header>
 
-      <KeyListener />
+      <Game/>
+
+      <Footer/>
     </>
   )
 }
