@@ -10,8 +10,9 @@ import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-c';
 import 'prismjs/components/prism-cpp';
 import 'prismjs/components/prism-jsx';
+import confetti from 'canvas-confetti';
 
-function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setInputCode }) {
+function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setInputCode, tabuladoSetting }) {
     const containerRef = useRef(null)
 
     const resetGame = () => {
@@ -27,12 +28,26 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             if (inputCode.endsWith('\n')) {
                 const container = containerRef.current;
                 const maxScroll = container.scrollHeight - container.clientHeight;
-                const nextScrollTop = container.scrollTop + 20;
+                const nextScrollTop = container.scrollTop + 17;
                 
                 container.scrollTop = nextScrollTop > maxScroll ? maxScroll : nextScrollTop;
             }
         }
     }, [inputCode])
+
+    useEffect(() => {
+        const handleBeforeInput = (e) => {
+            e.preventDefault();
+            const char = e.data; // Esto será "^" directamente si es lo que el usuario escribe
+            const expectedChar = fragmentRandom.charAt(inputCode.length);
+            if (char === expectedChar) {
+                setInputCode(prev => prev + char);
+            }
+        };
+        document.addEventListener("beforeinput", handleBeforeInput);
+        return () => document.removeEventListener("beforeinput", handleBeforeInput);
+    }, [fragmentRandom, inputCode]);
+
 
     const handleKeyDown = (e) => {
         e.preventDefault()
@@ -40,6 +55,8 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         const expectedChar = fragmentRandom.charAt(inputCode.length)
 
         let key = e.key
+
+        console.log("key", key)
 
         // Controlar el reinicio del juego
         const isCtrl = e.ctrlKey || e.metaKey
@@ -49,9 +66,30 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             return
         }
 
+        // Evitar que el usuario meta espacios donde va un tab
+        if (e.key === ' ' && fragmentRandom.slice(inputCode.length, inputCode.length + 4) === '    ') {
+            e.preventDefault()
+            return
+        }
+
         if (key === 'Enter' && '\n' === expectedChar) {
             key = '\n'
             setInputCode((prev) => prev + key);
+
+            if (tabuladoSetting) {
+
+                let newCode = inputCode + "\n"
+
+                let index = newCode.length
+
+                while (fragmentRandom.slice(index, index + 4) === "    ") {
+                    newCode += "    "
+                    index += 4
+                }
+                
+                setInputCode(newCode)
+            }
+           
             return
         }
 
@@ -68,10 +106,11 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             return
         }
 
-        if (e.key === 'Backspace') {
-            setInputCode((prev) => prev.slice(0, -1))
-            return
-        }
+        // Opción de borrar deshabilitada de forma experimental
+        //if (e.key === 'Backspace') {
+        //    setInputCode((prev) => prev.slice(0, -1))
+        //    return
+        //}
 
         if (key === expectedChar) {
             setInputCode((prev) => prev + key)
@@ -124,6 +163,12 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         document.addEventListener('keydown', handleKeyDown)
         return () => document.removeEventListener('keydown', handleKeyDown)
     })
+
+    if (inputCode.length === fragmentRandom.length) {
+        confetti()
+        //resetGame()
+        resetFragment()
+    }
 
     return (
         <>

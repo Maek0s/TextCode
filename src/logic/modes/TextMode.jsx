@@ -5,9 +5,6 @@ import { FaRedo } from "react-icons/fa";
 import confetti from 'canvas-confetti'
 
 function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRandom, timer, resetGame} ) {
-
-    console.log("Timer actual: ", timer)
-
     useEffect(() => {
         function handleKeyDown(event) {
             
@@ -50,6 +47,7 @@ function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRand
                 resetGame()
             } else {
                 console.log("Frase incompleta o con errores:", phrase)
+                resetGame()
             }
         }
     }, [numberLetter, phrase, phraseRandom]);

@@ -38,6 +38,8 @@ export function useFragmentCode(language) {
     const [fragmentRandom, setCodeFragment] = useState("")
     const lastFragmentRef = useRef(null)
 
+    console.log("useFragmentCode ", language)
+
     let file
 
     switch (language) {

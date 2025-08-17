@@ -12,7 +12,8 @@ import { PiTextAaBold } from "react-icons/pi";
 import TextMode from './modes/TextMode.jsx'
 import CodeMode from './modes/CodeMode.jsx'
 
-function Game() {
+
+function Game({ tabuladoSetting }) {
     const { phraseRandom, resetPhrase } = useRandomPhrase();
     const [ phrase, setPhrase ] = useState("");
     const [ inputCode, setInputCode ] = useState("")
@@ -60,6 +61,7 @@ function Game() {
                             progLanguage={progLanguage}
                             inputCode={inputCode}
                             setInputCode={setInputCode}
+                            tabuladoSetting={tabuladoSetting}
                         />
             default:
                 return (
