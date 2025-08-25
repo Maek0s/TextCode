@@ -4,21 +4,28 @@ import { FaRedo } from "react-icons/fa";
 
 import confetti from 'canvas-confetti'
 
-function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRandom, timer, resetGame} ) {
+import { playKeySound } from '../sound/keysounds.jsx';
+
+import "../../App.css"
+
+function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRandom, resetGame, settings} ) {
     useEffect(() => {
         function handleKeyDown(event) {
-            
             // Gestión de escritura o borrado de caracteres
             if (event.key == "Backspace") {
                 if (phrase.length > 0) {
                     setPhrase(prev => prev.substring(0, prev.length - 1))
                     setNumberLetter(prev => prev - 1)
+
+                    if (settings.sonidoEscribir) playKeySound()
                 }
             } else {
                 // Filtramos que es una letra o signo permitido
                 if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ,.!?;]$/.test(event.key)) {
                     setPhrase(prev => prev + event.key)
                     setNumberLetter(prev => prev + 1)
+
+                    if (settings.sonidoEscribir) playKeySound()
                 }
             }
 
@@ -64,7 +71,7 @@ function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRand
                                 {word.split("").map((char, charIndex) => {
                                     const currentIndex = globalCharIndex
                                     
-                                    const isCorrect = phrase[currentIndex] === char;
+                                    const isCorrect = phrase[currentIndex] === char
                                     const style = {
                                         color: isCorrect
                                         ? "green" : phrase[currentIndex]
@@ -88,7 +95,6 @@ function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRand
                         )
                     })
                 }
-                
             </div>
             <button className="resetButton"
                     onClick={(e) => {
@@ -100,7 +106,6 @@ function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRand
                 <span className="text">Reiniciar</span>
             </button>
         </>
-        
     )
 }
 

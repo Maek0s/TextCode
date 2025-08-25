@@ -81,13 +81,13 @@ div.icon img {
 
 .optionsGame {
   position: fixed;
-  top: calc(50% - 180px);
+  top: calc(50% - 200px);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .optionsGame .group {
@@ -174,6 +174,12 @@ span.timerDisplayed {
   justify-content: center;
 }
 
+.mode.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
 /* Game */
 
 .game {
@@ -235,6 +241,43 @@ span.timerDisplayed {
   margin-top: 10px !important;
 }
 
+/* Controls div */
+
+.controlsDiv {
+  position: fixed;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: #888;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.controlsDiv ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.controlsDiv li {
+  margin: 4px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.controlsDiv kbd {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #333;
+}
+
 /* Code game mode */
 
 ::-webkit-scrollbar {
@@ -287,39 +330,50 @@ span.timerDisplayed {
 
 footer {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 50px;
-  padding: 0px 10px 0px 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.githubCreator,
+.nextUpdates,
+.madeWith {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .githubCreator {
-  position: absolute;
-  left: 10px;
-  display: flex;
-  align-items: center;
+  justify-content: flex-start;
 }
 
-.githubCreator a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.nextUpdates {
+  justify-content: center;
 }
 
 .madeWith {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  flex: 1;
-  text-align: right;
+  justify-content: flex-end;
 }
 
+.githubCreator a,
 .madeWith a {
   display: flex;
   align-items: center;
   gap: 6px;
 }
+
+.nextUpdates {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 
 /* Cursor mode code */
 

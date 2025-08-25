@@ -1,5 +1,3 @@
-export const saveSettings = ({ value }) => {
-  window.localStorage.setItem('tabulado', value)
-
-  console.log(window.localStorage.getItem('tabulado'))
+export const saveSettings = (newSettings) => {
+  window.localStorage.setItem("settings", JSON.stringify(newSettings))
 }

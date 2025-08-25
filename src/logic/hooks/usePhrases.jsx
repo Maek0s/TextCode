@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from "react";
-import data from "../assets/gamemodes/text/spain.json";
-import javaFragments from "../assets/gamemodes/code/java.json";
-import reactFragments from "../assets/gamemodes/code/react.json";
-import cppFragments from "../assets/gamemodes/code/cpp.json";
+import { useEffect, useRef, useState } from "react";
+import cppFragments from "../../assets/gamemodes/code/cpp.json";
+import javaFragments from "../../assets/gamemodes/code/java.json";
+import reactFragments from "../../assets/gamemodes/code/react.json";
+import data from "../../assets/gamemodes/text/spain.json";
+import words from "../../assets/gamemodes/time/spain.json";
 
-import { getRandomInRange } from "../utils/GeneralUtils"
+import { getRandomInRange } from "../../utils/GeneralUtils";
 
 export function useRandomPhrase() {
     const [phraseRandom, setRandomPhrase] = useState("")
@@ -38,8 +39,6 @@ export function useFragmentCode(language) {
     const [fragmentRandom, setCodeFragment] = useState("")
     const lastFragmentRef = useRef(null)
 
-    console.log("useFragmentCode ", language)
-
     let file
 
     switch (language) {
@@ -70,6 +69,7 @@ export function useFragmentCode(language) {
             tries++;
         } while (fragment === lastFragmentRef.current && tries < 10);
 
+        // Forzar aunque sea el mismo
         lastFragmentRef.current = fragment;
         setCodeFragment(fragment);
     }
@@ -79,4 +79,32 @@ export function useFragmentCode(language) {
     }, [language])
 
     return { fragmentRandom, resetFragment: generateRandomFragment }
+}
+
+export function useRandomWord() {
+    const [word, setRandomWord] = useState("")
+
+    const lastPhraseRef = useRef(null)
+
+    const generateRandomWord = () => {
+        if (!words.words || words.words.length === 0) return;
+
+        let word = null;
+        let tries = 0;
+        do {
+            const index = getRandomInRange(0, data.frases.length - 1);
+            word = words.words[index];
+            tries++;
+        } while (word === lastPhraseRef.current && tries < 10);
+
+        lastPhraseRef.current = word;
+
+        setRandomWord(word)
+    }
+
+    useEffect(() => {
+        generateRandomWord();
+    }, [])
+
+    return { word, getWord: generateRandomWord }
 }

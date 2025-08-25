@@ -1,0 +1,89 @@
+.gameTime {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    font-family: monospace;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    max-height: calc(2rem * 3);
+    overflow: hidden;
+    max-width: 60%;
+    justify-content: center;
+    word-spacing: 1rem;
+}
+
+.gameTime > div {
+    display: inline-flex;
+    margin-right: 1rem;
+}
+
+.gameTime span span {
+    display: inline-block;
+}
+
+.resetButtonTime {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 3vh;
+}
+
+/* OneWord */
+
+.buttons.oneword {
+   display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 13vh;
+    width: 100%;
+    max-width: 400px;
+}
+
+.buttons.oneword .stopButton,
+.buttons.oneword .resetButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0;
+    flex: 1;
+    max-width: 180px;
+    justify-content: center;
+}
+
+.stopButton {
+    background-color: #fc4646;
+}
+
+@media (max-width: 840px) {
+  .gameTime {
+    width: 90%;
+    font-size: 1.5rem;
+  }
+
+  .resetButtonTime {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}

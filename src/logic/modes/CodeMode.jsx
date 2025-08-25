@@ -12,11 +12,12 @@ import 'prismjs/components/prism-cpp';
 import 'prismjs/components/prism-jsx';
 import confetti from 'canvas-confetti';
 
-function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setInputCode, tabuladoSetting }) {
+function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setInputCode, settings }) {
     const containerRef = useRef(null)
 
     const resetGame = () => {
         setInputCode("")
+        
         if (containerRef.current) {
             containerRef.current.scrollTop = 0;
         }
@@ -46,7 +47,7 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         };
         document.addEventListener("beforeinput", handleBeforeInput);
         return () => document.removeEventListener("beforeinput", handleBeforeInput);
-    }, [fragmentRandom, inputCode]);
+    }, [fragmentRandom, inputCode, setInputCode]);
 
 
     const handleKeyDown = (e) => {
@@ -55,8 +56,6 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         const expectedChar = fragmentRandom.charAt(inputCode.length)
 
         let key = e.key
-
-        console.log("key", key)
 
         // Controlar el reinicio del juego
         const isCtrl = e.ctrlKey || e.metaKey
@@ -71,13 +70,13 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             e.preventDefault()
             return
         }
+        console.log(settings)
 
         if (key === 'Enter' && '\n' === expectedChar) {
             key = '\n'
             setInputCode((prev) => prev + key);
 
-            if (tabuladoSetting) {
-
+            if (settings.tabulacion) {
                 let newCode = inputCode + "\n"
 
                 let index = newCode.length
@@ -164,11 +163,12 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         return () => document.removeEventListener('keydown', handleKeyDown)
     })
 
-    if (inputCode.length === fragmentRandom.length) {
-        confetti()
-        //resetGame()
-        resetFragment()
-    }
+    useEffect(() => {
+        if (inputCode.length === fragmentRandom.length && fragmentRandom.length > 0) {
+            confetti();
+            resetGame();
+        }
+    }, [inputCode, fragmentRandom]);
 
     return (
         <>
