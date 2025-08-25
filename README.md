@@ -4,8 +4,8 @@ Es una aplicación web diseñada para ayudarte a mejorar tu mecanografía, tanto
 
 ## 💻 Estado de desarrollo
 
-El proyecto se encuentra actualmente en desarrollo, sin una fecha definida para su primera versión estable.  
-Aun así, puedes probarlo directamente desde su [página web](https://maek0s.github.io/TextCode/).
+El proyecto se encuentra actualmente en desarrollo continuo, aún así existen versiones previas a una versión estable.  
+Puedes probarlo directamente desde su [página web](https://maek0s.github.io/TextCode/).
 
 ## 🧠 Tecnologías usadas
 
