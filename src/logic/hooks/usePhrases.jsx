@@ -13,23 +13,23 @@ export function useRandomPhrase() {
     const lastPhraseRef = useRef(null)
 
     const generateRandomPhrase = () => {
-        if (!data.frases || data.frases.length === 0) return;
+        if (!data.frases || data.frases.length === 0) return
 
-        let phrase = null;
-        let tries = 0;
+        let phrase = null
+        let tries = 0
         do {
-            const index = getRandomInRange(0, data.frases.length - 1);
-            phrase = data.frases[index];
-            tries++;
-        } while (phrase === lastPhraseRef.current && tries < 10);
+            const index = getRandomInRange(0, data.frases.length - 1)
+            phrase = data.frases[index]
+            tries++
+        } while (phrase === lastPhraseRef.current && tries < 10)
 
-        lastPhraseRef.current = phrase;
+        lastPhraseRef.current = phrase
 
         setRandomPhrase(phrase)
     }
 
     useEffect(() => {
-        generateRandomPhrase();
+        generateRandomPhrase()
     }, [])
 
     return { phraseRandom, resetPhrase: generateRandomPhrase }
@@ -59,23 +59,23 @@ export function useFragmentCode(language) {
     }
                 
     const generateRandomFragment = () => {
-        if (!file.codes || file.codes.length === 0) return;
+        if (!file.codes || file.codes.length === 0) return
 
-        let fragment = null;
-        let tries = 0;
+        let fragment = null
+        let tries = 0
         do {
-            const index = getRandomInRange(0, file.codes.length - 1);
-            fragment = file.codes[index];
-            tries++;
-        } while (fragment === lastFragmentRef.current && tries < 10);
+            const index = getRandomInRange(0, file.codes.length - 1)
+            fragment = file.codes[index]
+            tries++
+        } while (fragment === lastFragmentRef.current && tries < 10)
 
         // Forzar aunque sea el mismo
-        lastFragmentRef.current = fragment;
-        setCodeFragment(fragment);
+        lastFragmentRef.current = fragment
+        setCodeFragment(fragment)
     }
 
     useEffect(() => {
-        generateRandomFragment();
+        generateRandomFragment()
     }, [language])
 
     return { fragmentRandom, resetFragment: generateRandomFragment }
@@ -87,23 +87,23 @@ export function useRandomWord() {
     const lastPhraseRef = useRef(null)
 
     const generateRandomWord = () => {
-        if (!words.words || words.words.length === 0) return;
+        if (!words.words || words.words.length === 0) return
 
-        let word = null;
-        let tries = 0;
+        let word = null
+        let tries = 0
         do {
-            const index = getRandomInRange(0, data.frases.length - 1);
-            word = words.words[index];
-            tries++;
-        } while (word === lastPhraseRef.current && tries < 10);
+            const index = getRandomInRange(0, data.frases.length - 1)
+            word = words.words[index]
+            tries++
+        } while (word === lastPhraseRef.current && tries < 10)
 
-        lastPhraseRef.current = word;
+        lastPhraseRef.current = word
 
         setRandomWord(word)
     }
 
     useEffect(() => {
-        generateRandomWord();
+        generateRandomWord()
     }, [])
 
     return { word, getWord: generateRandomWord }

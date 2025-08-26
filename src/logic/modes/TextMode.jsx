@@ -77,12 +77,21 @@ function TextMode({ phrase, setPhrase, numberLetter, setNumberLetter, phraseRand
                                         ? "green" : phrase[currentIndex]
                                         ? "red"
                                         : "gray",
-                                    };
+                                    }
+
+                                    const withCursor = currentIndex === numberLetter
                                     
                                     globalCharIndex++
                                     
                                     return (
                                         <span key={charIndex} style={style}>
+                                            {(settings.cursor && withCursor) &&
+                                                (<span class="cursor"
+                                                    style={{
+                                                         "--cursor-color": settings.cursorColor || "#007acc",
+                                                        }}>
+                                                </span>)
+                                            }
                                             {char}
                                         </span>
                                     )

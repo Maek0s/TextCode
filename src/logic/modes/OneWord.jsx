@@ -23,7 +23,7 @@ function OneWord({ numberLetter, setNumberLetter, timer, settings} ) {
         getWord();
         setWritten("");
         setNumberLetter(0);
-    }, [getWord, setNumberLetter]);
+    }, [getWord, setNumberLetter])
 
     useEffect(() => {
         function handleKeyDown(event) {

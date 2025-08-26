@@ -1,12 +1,24 @@
+import { ChromePicker } from "react-color";
+import { useState } from "react";
+
 import '../styles/SettingsModal.css'
 
-export default function SettingsModal({ isOpen, onClose, settings, onSave }) {
+export default function SettingsModal({ isOpen, onClose, settings, onSave }) {  
+  const [showColorPicker, setShowColorPicker] = useState(false);
+
   if (!isOpen) return null
 
   const toggleSetting = (key) => {
     const newSettings = { ...settings, [key]: !settings[key] }
     onSave(newSettings)
   }
+
+  const handleColorChange = (newColor) => {
+    const updatedSettings = { ...settings, cursorColor: newColor.hex }
+    onSave(updatedSettings)
+  }
+
+  console.log(settings.cursorColor)
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -32,6 +44,45 @@ export default function SettingsModal({ isOpen, onClose, settings, onSave }) {
             <div className="toggle-thumb" />
           </div>
         </label>
+
+        <label className="setting-row">
+          <span>Mostrar cursor</span>
+          <div
+            className={`toggle-switch ${settings.cursor ? "on" : "off"}`}
+            onClick={() => toggleSetting("cursor")}
+          >
+            <div className="toggle-thumb" />
+          </div>
+        </label>
+
+        {
+          settings.cursor &&
+          (
+            <div className="setting-row">
+              <span>Color cursor</span>
+              <span className="reset"
+                    onClick={() => handleColorChange({ hex: "#007acc" })}>Reset</span>
+              <div
+                className="color-square"
+                style={{ backgroundColor: settings.cursorColor || "#000000" }}
+                onClick={() => setShowColorPicker(!showColorPicker)}
+              />
+
+              {showColorPicker && (
+                <div className="popover">
+                  <div className="cover" onClick={() => setShowColorPicker(false)} />
+                  
+                  <ChromePicker
+                    className="custom-chrome-picker"
+                    color={settings.cursorColor || "#007acc"}
+                    onChange={handleColorChange}
+                    disableAlpha={true}
+                  />
+                </div>
+              )}
+            </div>
+          )
+        }
 
         <h2>Sonido 🎶</h2>
 

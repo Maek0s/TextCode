@@ -16,14 +16,14 @@ import TimeMode from './modes/TimeMode.jsx';
 import OneWord from './modes/OneWord.jsx';
 
 function Game({ settings }) {
-    const { phraseRandom, resetPhrase } = useRandomPhrase();
-    const [ phrase, setPhrase ] = useState("");
+    const { phraseRandom, resetPhrase } = useRandomPhrase()
+    const [ phrase, setPhrase ] = useState("")
     const [ inputCode, setInputCode ] = useState("")
-    const [ numberLetter, setNumberLetter ] = useState(0);
-    const [ gamemode, setGamemode ] = useState("text");
-    const [ progLanguage, setProgLanguage ] = useState("java");
-    const { fragmentRandom, resetFragment } = useFragmentCode(progLanguage);
-    const [ timer, setTimer ] = useState(0);
+    const [ numberLetter, setNumberLetter ] = useState(0)
+    const [ gamemode, setGamemode ] = useState("text")
+    const [ progLanguage, setProgLanguage ] = useState("java")
+    const { fragmentRandom, resetFragment } = useFragmentCode(progLanguage)
+    const [ timer, setTimer ] = useState(0)
 
     const resetGame = () => {
         resetPhrase()

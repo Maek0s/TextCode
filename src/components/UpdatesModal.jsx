@@ -10,15 +10,6 @@ export default function UpdatesModal({ isOpen, onClose }) {
 
         <div className="updates-list">
           <div className="update-block">
-            <h3>v0.0.3</h3>
-            <ul>
-              <li>Lista de controles</li>
-              <li>Mejoras en los cursores y configuración</li>
-              <li>Más settings</li>
-            </ul>
-          </div>
-
-          <div className="update-block">
             <h3>v0.0.4</h3>
             <ul>
               <li>Temporizador en modo de juego OneWord</li>

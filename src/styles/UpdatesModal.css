@@ -24,6 +24,10 @@
   animation: scaleIn 0.2s ease;
 }
 
+li.done {
+  text-decoration: line-through;
+}
+
 /* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }

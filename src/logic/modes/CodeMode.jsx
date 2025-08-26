@@ -19,7 +19,7 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         setInputCode("")
         
         if (containerRef.current) {
-            containerRef.current.scrollTop = 0;
+            containerRef.current.scrollTop = 0
         }
         resetFragment()
     }
@@ -27,27 +27,27 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
     useLayoutEffect(() => {
         if (containerRef.current) {
             if (inputCode.endsWith('\n')) {
-                const container = containerRef.current;
-                const maxScroll = container.scrollHeight - container.clientHeight;
-                const nextScrollTop = container.scrollTop + 17;
+                const container = containerRef.current
+                const maxScroll = container.scrollHeight - container.clientHeight
+                const nextScrollTop = container.scrollTop + 17
                 
-                container.scrollTop = nextScrollTop > maxScroll ? maxScroll : nextScrollTop;
+                container.scrollTop = nextScrollTop > maxScroll ? maxScroll : nextScrollTop
             }
         }
     }, [inputCode])
 
     useEffect(() => {
         const handleBeforeInput = (e) => {
-            e.preventDefault();
-            const char = e.data; // Esto será "^" directamente si es lo que el usuario escribe
-            const expectedChar = fragmentRandom.charAt(inputCode.length);
+            e.preventDefault()
+            const char = e.data // Esto será "^" directamente si es lo que el usuario escribe
+            const expectedChar = fragmentRandom.charAt(inputCode.length)
             if (char === expectedChar) {
-                setInputCode(prev => prev + char);
+                setInputCode(prev => prev + char)
             }
         };
-        document.addEventListener("beforeinput", handleBeforeInput);
-        return () => document.removeEventListener("beforeinput", handleBeforeInput);
-    }, [fragmentRandom, inputCode, setInputCode]);
+        document.addEventListener("beforeinput", handleBeforeInput)
+        return () => document.removeEventListener("beforeinput", handleBeforeInput)
+    }, [fragmentRandom, inputCode, setInputCode])
 
 
     const handleKeyDown = (e) => {
@@ -133,14 +133,14 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
         const typed = fragmentRandom.slice(0, inputCode.length)
         const rest = fragmentRandom.slice(inputCode.length)
 
-        const safeLang = Prism.languages[progLanguage] ? progLanguage : 'jsx';
-        const prismLang = Prism.languages[safeLang];
+        const safeLang = Prism.languages[progLanguage] ? progLanguage : 'jsx'
+        const prismLang = Prism.languages[safeLang]
 
-        const typedHighlighted = Prism.highlight(typed, prismLang, safeLang);
-        const restEscaped = escapeHtml(rest);
+        const typedHighlighted = Prism.highlight(typed, prismLang, safeLang)
+        const restEscaped = escapeHtml(rest)
 
         // Insertar cursor
-        const cursorSpan = `<span class="cursor"></span>`
+        const cursorSpan = `<span class="cursor cursorCode"></span>`
 
         let fullCode = typedHighlighted + cursorSpan + `<span style="color: gray;">${restEscaped}</span>`
 
@@ -165,10 +165,10 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
 
     useEffect(() => {
         if (inputCode.length === fragmentRandom.length && fragmentRandom.length > 0) {
-            confetti();
-            resetGame();
+            confetti()
+            resetGame()
         }
-    }, [inputCode, fragmentRandom]);
+    }, [inputCode, fragmentRandom])
 
     return (
         <>

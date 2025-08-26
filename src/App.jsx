@@ -21,7 +21,7 @@ import UpdatesModal from './components/UpdatesModal.jsx';
 
 function App() {
     // Header
-    const [ isSettingsOpen, setIsSettingsOpen ] = useState(false);
+    const [ isSettingsOpen, setIsSettingsOpen ] = useState(false)
 
     // Settings
     const [ settings, setSettings ] = useState(() => {
@@ -35,7 +35,7 @@ function App() {
     })
 
     // Footer
-    const [ isUpdatesOpen, setIsUpdatesOpen ] = useState(false);
+    const [ isUpdatesOpen, setIsUpdatesOpen ] = useState(false)
 
     const handleSave = (newSettings) => {
         setSettings(newSettings)

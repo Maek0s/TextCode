@@ -22,6 +22,50 @@
   animation: scaleIn 0.2s ease;
 }
 
+.color-square {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  z-index: 2;
+  margin-top: 0px;
+  margin-left: 50px;
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.reset {
+  color: red;
+  text-align: right;
+  margin-left: 40%;
+
+}
+
+/* Estilo propio del ChromePicker para evitar herencias */
+.custom-chrome-picker {
+  background: #fff !important;
+  color: #000 !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+}
+
+.custom-chrome-picker input {
+  background: #fff !important;
+  color: #000 !important;
+}
+
 /* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }

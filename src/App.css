@@ -379,7 +379,6 @@ footer {
 
 .cursor {
   position: relative;
-  color: #007acc;
   font-weight: bold;
 }
 
@@ -387,21 +386,21 @@ footer {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -2px;
   width: 2px;
-  height: 1em;
-  background-color: #007acc;
+  height: 0.90em;
+  background-color: var(--cursor-color, #007acc);
   animation: blink 1s steps(2, start) infinite;
 }
 
+.cursor.cursorCode::after {
+  bottom: 0px;
+  height: 1.1em;
+}
+
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 /* Cambios situacionales */
