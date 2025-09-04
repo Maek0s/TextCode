@@ -70,7 +70,6 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             e.preventDefault()
             return
         }
-        console.log(settings)
 
         if (key === 'Enter' && '\n' === expectedChar) {
             key = '\n'
@@ -104,12 +103,6 @@ function CodeMode({ fragmentRandom, resetFragment, progLanguage, inputCode, setI
             }
             return
         }
-
-        // Opción de borrar deshabilitada de forma experimental
-        //if (e.key === 'Backspace') {
-        //    setInputCode((prev) => prev.slice(0, -1))
-        //    return
-        //}
 
         if (key === expectedChar) {
             setInputCode((prev) => prev + key)

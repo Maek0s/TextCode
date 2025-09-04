@@ -4,8 +4,7 @@ import { MdBrowserUpdated } from "react-icons/md";
 
 import packageJson from '/package.json';
 
-function Footer({ isUpdatesOpen, setIsUpdatesOpen }) {
-    console.log(isUpdatesOpen)
+function Footer({ setIsUpdatesOpen }) {
     return (
         <footer>
             <span className="githubCreator">

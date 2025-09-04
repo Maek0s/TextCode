@@ -18,8 +18,6 @@ export default function SettingsModal({ isOpen, onClose, settings, onSave }) {
     onSave(updatedSettings)
   }
 
-  console.log(settings.cursorColor)
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -83,6 +81,16 @@ export default function SettingsModal({ isOpen, onClose, settings, onSave }) {
             </div>
           )
         }
+
+        <label className="setting-row">
+          <span>Mostrar pantalla final</span>
+          <div
+            className={`toggle-switch ${settings.enableFinalScreen ? "on" : "off"}`}
+            onClick={() => toggleSetting("enableFinalScreen")}
+          >
+            <div className="toggle-thumb" />
+          </div>
+        </label>
 
         <h2>Sonido 🎶</h2>
 

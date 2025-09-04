@@ -7,21 +7,24 @@ import logo from './assets/images/logotextcode.png'
 import Game from './logic/Game.jsx'
 
 import Footer from './components/Footer.jsx';
-
 import OptionNav from './components/OptionNav.jsx';
 
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaCheckCircle } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { MdLeaderboard } from "react-icons/md";
 
 import SettingsModal from "./components/SettingsModal.jsx";
+import Notification from './components/Notification.jsx';
+import UpdatesModal from './components/UpdatesModal.jsx';
 
 import { saveSettings } from "./logic/storage/settings.js"
-import UpdatesModal from './components/UpdatesModal.jsx';
 
 function App() {
     // Header
     const [ isSettingsOpen, setIsSettingsOpen ] = useState(false)
+
+    // Notification
+    const [notification, setNotification] = useState(null);
 
     // Settings
     const [ settings, setSettings ] = useState(() => {
@@ -68,6 +71,18 @@ function App() {
                 </div>
             </header>
             <div>
+                {notification && (
+                    <Notification
+                        message={notification.message}
+                        icon={notification.icon}
+                        backgroundColor={notification.backgroundColor}
+                        textColor={notification.textColor}
+                        duration={notification.duration}
+                        width={notification.width}
+                        position={notification.position}
+                        onClose={() => setNotification(null)}
+                    />
+                )}
                 <SettingsModal
                     isOpen={isSettingsOpen}
                     onClose={() => setIsSettingsOpen(false)}
@@ -80,21 +95,12 @@ function App() {
                 />
             </div>
 
-            <Game settings={settings}/>
-
-            {
-                settings.controles && (
-                    <div className="controlsDiv">
-                        <ul>
-                            <li><kbd>Ctrl</kbd> + <kbd>R</kbd> Reiniciar</li>
-                            {/*<li><kbd>Esc</kbd> Parar juego</li>*/}
-                        </ul>
-                    </div>
-                )
-            }
+            <Game settings={settings}
+                  setNotification={setNotification}
+                  notification={notification}
+            />
 
             <Footer
-                isUpdatesOpen={isUpdatesOpen}
                 setIsUpdatesOpen={setIsUpdatesOpen}
             />
         </>

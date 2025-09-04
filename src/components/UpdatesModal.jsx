@@ -10,18 +10,8 @@ export default function UpdatesModal({ isOpen, onClose }) {
 
         <div className="updates-list">
           <div className="update-block">
-            <h3>v0.0.4</h3>
-            <ul>
-              <li>Temporizador en modo de juego OneWord</li>
-              <li>Pantalla final</li>
-              <li>Cálculo de WPM, letras acertadas y más estadísticas</li>
-            </ul>
-          </div>
-
-          <div className="update-block">
             <h3>v0.0.5</h3>
             <ul>
-              <li>Temporizador en modo de juego TimeMode</li>
               <li>Mejora en el responsive</li>
               <li>Mejora en la estructura del proyecto</li>
             </ul>
@@ -46,9 +36,11 @@ export default function UpdatesModal({ isOpen, onClose }) {
           <div className="update-block">
             <h3>v1.0.1</h3>
             <ul>
+              <li>Compatibilidad con móvil</li>
               <li>Tabla de clasificación de mejores tiempos</li>
             </ul>
           </div>
+          
         </div>
 
         <p className="updates-note">

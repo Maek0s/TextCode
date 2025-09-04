@@ -374,8 +374,7 @@ footer {
   gap: 6px;
 }
 
-
-/* Cursor mode code */
+/* Cursor */
 
 .cursor {
   position: relative;
@@ -398,9 +397,28 @@ footer {
   height: 1.1em;
 }
 
+.cursor::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 0.9em;
+  background: var(--cursor-color, #007acc);
+  animation:
+    blink 1s steps(2, start) infinite,
+    pop 0.25s ease-out;
+}
+
+/* Animaciones del cursor */
+
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+@keyframes pop {
+  0%   { transform: scaleY(0.9); opacity: 0; }
+  50%  { transform: scaleY(1.2); opacity: 1; }
+  100% { transform: scaleY(1);   opacity: 1; }
 }
 
 /* Cambios situacionales */
